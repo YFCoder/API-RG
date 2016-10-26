@@ -8,7 +8,11 @@ import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -18,7 +22,7 @@ import java.util.List;
 public class GiveClass extends Controller {
     @ActionKey("/sc")
     public void give()  {
-     /* StringBuilder jsonstr = new StringBuilder();
+      StringBuilder jsonstr = new StringBuilder();
         BufferedReader reader = null;
         try {
             reader = this.getRequest().getReader();
@@ -57,10 +61,9 @@ public class GiveClass extends Controller {
             maxtime = jsonobj.getInt("maxtime");
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
+        }
 
 
-         int maxtime = 0;
 
          Classes allclass = new Classes();
         List<Class_Message> list = allclass.getList();
