@@ -1,11 +1,11 @@
-package com.demo.showclass;
+package com.demo.GiveClass;
 
 import java.io.Serializable;
 
 /**
  * Created by huangzhiwei on 16/10/26.
  */
-public class Class_Message   {
+public class Class_Message implements Serializable {
     private String class_name;
     private String class_pic_url;
     private String teacher_name;
@@ -59,14 +59,5 @@ public class Class_Message   {
 
     public void setAvailable(String available) {
         this.available = available;
-    }
-    public Class_Message(){
-        this.available ="1";
-        this.level ="1";
-        this.local ="1";
-        this.teacher_name="1";
-        this.class_pic_url="1";
-        this.class_name ="1";
-
     }
 }

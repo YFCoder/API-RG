@@ -1,10 +1,10 @@
 package com.demo.common.config;
 
 import com.demo.Ch_Hd_Icon.Chicon;
+import com.demo.GiveClass.GiveClass;
 import com.demo.Regist.Regist;
 import com.demo.SlideShow.SlideShow;
 import com.demo.common.model._MappingKit;
-import com.demo.showclass.GiveClass;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
