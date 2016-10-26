@@ -1,0 +1,121 @@
+package com.demo.showclass;
+
+import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * Created by huangzhiwei on 16/10/22.
+ */
+public class ShowClass extends Controller {
+    public void index()  {
+      StringBuilder jsonstr = new StringBuilder();
+        BufferedReader reader = null;
+        try {
+            reader = this.getRequest().getReader();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                jsonstr.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String js = String.valueOf(jsonstr);
+        JSONObject jsonobj = null;
+        try {
+            jsonobj = new JSONObject(js);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        int id = 0;
+        try {
+            id = jsonobj.getInt("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        int maxtime = 0;
+        try {
+            maxtime = jsonobj.getInt("maxtime");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+         String alljson = "";
+         for (int i =0;i<3;i++) {
+
+             Record cs = Db.findById("class",maxtime+1+i);
+             String class_name = cs.getStr("class_name");
+             String class_pic_url = cs.getStr("class_pic_url");
+             String teacher_name = cs.getStr("teacher_name");
+             String level = cs.getStr("level");
+             String available = "false";
+             String jsontemp ="";
+             String local = cs.getStr("local");
+
+  if (i!=2) {
+      jsontemp = "{\n" +
+              "\"class_name\":\n" +
+              "\"" + class_name + "\"," +
+              "\"class_pic_url\":\n" +
+              "\"" + class_pic_url + "\"," +
+              "\"teacher_name\":\n" +
+              "\"" + teacher_name + "\"," +
+              "\"level\":\n" +
+              "\"" + level + "\"," +
+              "\"available\":\n" +
+              "\"false\",\n" +
+              "\"local\":\n" +
+              "\"" + local + "\"" +
+              "},";
+  } if (i==2){
+
+
+                 jsontemp = "{\n"+"\"class_name\":\n" +
+                         "\"" + class_name + "\"," +
+                         "\"class_pic_url\":\n" +
+                         "\"" + class_pic_url + "\"," +
+                         "\"teacher_name\":\n" +
+                         "\"" + teacher_name + "\"," +
+                         "\"level\":\n" +
+                         "\"" + level + "\"," +
+                         "\"available\":\n" +
+                         "\"false\",\n" +
+                         "\"local\":\n" +
+                         "\"" + local + "\"" +
+                         "}";
+
+
+             }
+
+               alljson = alljson+jsontemp;
+
+         }
+
+          alljson = "\""+"list"+"\""+":["+alljson;
+        alljson=alljson+"]";
+        maxtime =maxtime+3;
+        alljson=alljson+","+ "\""+"maxiime"+"\""+":"+"\""+String.valueOf(maxtime)+"\"";
+
+
+
+        renderText(alljson);
+
+
+    }
+}
