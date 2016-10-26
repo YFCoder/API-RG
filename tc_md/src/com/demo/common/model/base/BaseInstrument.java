@@ -57,4 +57,12 @@ public abstract class BaseInstrument<M extends BaseInstrument<M>> extends Model<
 		return get("location");
 	}
 
+	public void setDescription(java.lang.String description) {
+		set("description", description);
+	}
+
+	public java.lang.String getDescription() {
+		return get("description");
+	}
+
 }
