@@ -9,12 +9,12 @@ import com.jfinal.plugin.activerecord.IBean;
 @SuppressWarnings("serial")
 public abstract class BaseClass<M extends BaseClass<M>> extends Model<M> implements IBean {
 
-	public void setClassId(java.lang.Integer classId) {
-		set("class_id", classId);
+	public void setId(java.lang.Integer id) {
+		set("id", id);
 	}
 
-	public java.lang.Integer getClassId() {
-		return get("class_id");
+	public java.lang.Integer getId() {
+		return get("id");
 	}
 
 	public void setClassName(java.lang.String className) {
@@ -47,6 +47,14 @@ public abstract class BaseClass<M extends BaseClass<M>> extends Model<M> impleme
 
 	public java.lang.String getLevel() {
 		return get("level");
+	}
+
+	public void setLocal(java.lang.String local) {
+		set("local", local);
+	}
+
+	public java.lang.String getLocal() {
+		return get("local");
 	}
 
 }

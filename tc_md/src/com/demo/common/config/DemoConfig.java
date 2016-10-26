@@ -4,7 +4,7 @@ import com.demo.Ch_Hd_Icon.Chicon;
 import com.demo.Regist.Regist;
 import com.demo.SlideShow.SlideShow;
 import com.demo.common.model._MappingKit;
-import com.demo.showclass.ShowClass;
+import com.demo.showclass.GiveClass;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
@@ -35,7 +35,7 @@ public class DemoConfig extends JFinalConfig {
         //第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
        //me.add("/getdata", Regist.class);
         me.add("/ss", SlideShow.class);
-        me.add("/sc", ShowClass.class);
+        me.add("/sc", GiveClass.class);
     }
 
     public static C3p0Plugin createC3p0Plugin() {
